@@ -1,3 +1,4 @@
+@Library('github.com/releaseworks/jenkinslib') _
 pipeline {
     agent any
 
@@ -24,7 +25,9 @@ pipeline {
             steps {
                 echo 'Building app...'
                 sh 'npm run build'
-                sh 'aws s3 ls'
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                    AWS("--region=us-east-2 s3 ls")
+                }
             }
         }
 
