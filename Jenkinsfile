@@ -24,6 +24,7 @@ pipeline {
             steps {
                 echo 'Building app...'
                 sh 'npm run build'
+                sh 'aws s3 ls'
             }
         }
 
