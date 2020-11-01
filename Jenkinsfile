@@ -25,7 +25,6 @@ pipeline {
             steps {
                 echo 'Building app...'
                 sh 'npm run build'
-                
             }
         }
 
