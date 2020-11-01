@@ -23,7 +23,7 @@ pipeline {
 
             steps {
                 echo 'Building app...'
-                sh 'npm build'
+                sh 'npm run build'
             }
         }
 
