@@ -7,14 +7,7 @@ pipeline {
 
         stage("install") {
             steps {
-                sh 'npm config ls'
-            }
-        }
-
-        stage("build") {
-
-            steps {
-                echo 'Building app...'
+                sh 'npm install'
             }
         }
 
@@ -22,7 +15,18 @@ pipeline {
 
             steps {
                 echo 'Testing app...'
+                sh 'npm test'
             }
         }
+
+        stage("build") {
+
+            steps {
+                echo 'Building app...'
+                sh 'npm build'
+            }
+        }
+
+
     }
 }
